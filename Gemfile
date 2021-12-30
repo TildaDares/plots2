@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.6'
+ruby '2.7.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -43,7 +43,7 @@ gem "php-serialize", :require => "php_serialize"
 gem 'rack-cors', :require => 'rack/cors'
 gem "rack-openid"
 gem "rack-test", "1.1.0"
-gem 'rails', '5.2.3'
+gem 'rails', '5.2.6'
 gem 'rails-controller-testing'
 gem 'rails-dom-testing'
 gem 'rails-i18n', '~> 5.1.3'
@@ -53,7 +53,7 @@ gem 'rdiscount', '~> 2.2'
 gem 'react-rails'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'responders', '~> 3.0'
-gem 'rubocop', '~> 1.23.0', require: false
+gem 'rubocop', '~> 1.24.0', require: false
 gem "ruby-openid", :require => "openid"
 gem 'sanitize'
 gem 'sentry-ruby'
@@ -124,7 +124,7 @@ group :test, :development do
   gem 'jasmine-rails'
   gem 'json_expressions'
   gem 'minitest-reporters', '~> 1.4.3'
-  gem 'openssl', '~> 2.2.1'
+  gem 'openssl', '~> 3.0.0'
   gem 'phantomjs'
   gem 'puma', '~> 5.5'
   gem 'rails-perftest'

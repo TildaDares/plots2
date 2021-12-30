@@ -219,6 +219,7 @@ Plots2::Application.routes.draw do
   put 'tag/remove_all_tags' => 'tag#remove_all_tags'
   get 'tag/:id' => 'tag#show', :as => :tag
   get 'tag/:id/stats' => 'tag#stats', :as => :tag_stats
+  get 'tag/comments/:id' => 'tag#comments'
   get 'locations/form' => 'tag#location'
   get 'locations/modal' => 'tag#location_modal'
   get 'embed/grid/:tagname' => 'tag#gridsEmbed'
@@ -236,6 +237,7 @@ Plots2::Application.routes.draw do
   get 'nearby' => 'home#nearby'
   get 'profile/edit' => 'users#edit'
   post 'profile/photo' => 'users#photo'
+  delete 'profile/photo/delete/:id' => 'users#delete_photo'
   get 'profile/info/:id' => 'users#info', as: 'info'
   get 'profile' => 'users#profile'
   get 'profile/:id' => 'users#profile', as: :user

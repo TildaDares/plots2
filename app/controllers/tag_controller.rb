@@ -85,7 +85,7 @@ class TagController < ApplicationController
     end
     @node = @wiki # expose the wiki node in the @node variable so we get open graph meta tags in the layout
 
-    default_type = params[:id].match?('question:') ? 'questions' : 'note'
+    default_type = params[:id]&.match?('question:') ? 'questions' : 'note'
 
     @node_type = params[:node_type] || default_type
     @start = Time.parse(params[:start]) if params[:start]
@@ -99,6 +99,8 @@ class TagController < ApplicationController
                   'map'
                 elsif @node_type == 'contributors'
                   'contributor'
+                elsif @node_type == 'comments'
+                  'comments'
                 end
 
     if params[:id][-1..-1] == '*' # wildcard tags
@@ -128,9 +130,7 @@ class TagController < ApplicationController
                else # params[:order] == 'last_updated'
                  'node_revisions.timestamp DESC'
                end
-
-    @pagy, nodes = pagy(nodes.order(order_by), items: 24)
-    @paginated = true
+    nodes = nodes.order(order_by)
 
     @qids = Node.questions.where(status: 1)
                .collect(&:nid)
@@ -141,6 +141,9 @@ class TagController < ApplicationController
       @notes = nodes.where('node.nid NOT IN (?)', @qids) if @node_type == 'note'
       @questions = nodes.where('node.nid IN (?)', @qids) if @node_type == 'questions'
     end
+
+    @pagy, nodes = pagy(nodes, items: 24)
+    @paginated = true
 
     @wikis = nodes if @node_type == 'wiki'
     @wikis ||= []
@@ -508,6 +511,13 @@ class TagController < ApplicationController
       .where(nid: Node.find_by_tag(tagname))
     @answers = total_questions.joins(:comments).size.size
     @questions = total_questions.size.size
+  end
+
+  def comments
+    tids = Tag.where(name: params[:id]).collect(&:tid)
+    nids = NodeTag.where('tid IN (?)', tids).collect(&:nid)
+    @pagy, @comments = pagy(Comment.where(nid: nids).order('timestamp DESC'), items: 24)
+    render template: 'comments/_comments', locals: { comments: @comments }
   end
 
   private
