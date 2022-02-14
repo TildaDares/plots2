@@ -13,7 +13,7 @@ gem "composite_primary_keys"
 gem 'figaro' # To easily test OAuth providers in the development mode
 gem 'friendly_id'
 gem 'fog-google', '1.17.0' # Limited to `v1.13.0` due to https://github.com/fog/fog-google/issues/535
-gem 'fog-local', '0.7.0'
+gem 'fog-local', '0.8.0'
 gem 'gemoji'
 gem 'geocoder'
 gem 'georuby', '2.0'
@@ -53,7 +53,7 @@ gem 'rdiscount', '~> 2.2'
 gem 'react-rails'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'responders', '~> 3.0'
-gem 'rubocop', '~> 1.24.1', require: false
+gem 'rubocop', '~> 1.25.1', require: false
 gem "ruby-openid", :require => "openid"
 gem 'sanitize'
 gem 'sentry-ruby'
@@ -110,7 +110,7 @@ gem 'grape-rails-cache'
 group :development do
   gem 'byebug', platform: :mri
   gem "letter_opener"
-  gem 'listen', '~> 3.7.0'
+  gem 'listen', '~> 3.7.1'
   gem "nifty-generators"
   gem 'web-console', '>= 3.3.0'
 end
@@ -126,7 +126,7 @@ group :test, :development do
   gem 'minitest-reporters', '~> 1.5.0'
   gem 'openssl', '~> 3.0.0'
   gem 'phantomjs'
-  gem 'puma', '~> 5.5'
+  gem 'puma', '~> 5.6'
   gem 'rails-perftest'
   gem 'rake', '~> 13.0.6'
   gem 'rest-client'
