@@ -318,7 +318,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loadcss-rails (2.0.1)
-    loofah (2.15.0)
+    loofah (2.16.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -364,7 +364,7 @@ GEM
     netrc (0.11.0)
     nifty-generators (0.4.6)
     nio4r (2.5.8)
-    nokogiri (1.13.3)
+    nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nokogumbo (2.0.4)
@@ -411,7 +411,7 @@ GEM
     parallel (1.22.0)
     parser (3.1.1.0)
       ast (~> 2.4.1)
-    passenger (6.0.12)
+    passenger (6.0.13)
       rack
       rake (>= 0.8.1)
     phantomjs (2.1.1.0)
@@ -423,7 +423,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -481,7 +481,7 @@ GEM
       ffi (~> 1.0)
     rb-readline (0.5.5)
     rdiscount (2.2.0.2)
-    react-rails (2.6.1)
+    react-rails (2.6.2)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
@@ -541,6 +541,15 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.16.0)
       parser (>= 3.1.1.0)
+    rubocop-performance (1.13.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.14.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
     ruby-openid (2.9.2)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
@@ -564,9 +573,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
-    sentry-delayed_job (5.2.0)
+    sentry-delayed_job (5.2.1)
       delayed_job (>= 4.0)
-      sentry-ruby-core (~> 5.2.0)
+      sentry-ruby-core (~> 5.2.1)
     sentry-rails (5.2.1)
       railties (>= 5.0)
       sentry-ruby-core (~> 5.2.1)
@@ -578,8 +587,8 @@ GEM
       sentry-ruby-core (= 5.2.1)
     sentry-ruby-core (5.2.1)
       concurrent-ruby
-    sentry-sidekiq (5.2.0)
-      sentry-ruby-core (~> 5.2.0)
+    sentry-sidekiq (5.2.1)
+      sentry-ruby-core (~> 5.2.1)
       sidekiq (>= 3.0)
     sidekiq (6.4.1)
       connection_pool (>= 2.2.2)
@@ -762,6 +771,9 @@ DEPENDENCIES
   reverse_markdown
   rspec
   rubocop (~> 1.26.1)
+  rubocop-performance
+  rubocop-rails
+  rubocop-rake
   ruby-openid
   sanitize
   sassc (~> 2.4.0)
