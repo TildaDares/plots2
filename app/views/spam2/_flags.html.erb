@@ -1,48 +1,45 @@
 <script>
 $(document).ready(function () {
-	var table = table_main("#flag_table");
-	$("#all").click(function () { //select all button
-		$('.selectedId').prop('checked', !$('.selectedId').prop('checked'));
-		var check = ($('.selectedId').filter(":checked").length == $('.selectedId').length);
-		$('#select-count').text($('.selectedId').filter(":checked").length);
-		$('#selectall').prop("checked", check);
-		disable_buttons('#selectall');
+  var table = table_main("#flag_table");
+  $("#all").click(function () { //select all button
+    select_all();
   });
   var pageselect_val = localStorage.getItem('page-select') || '';
   $("#pageselect").val(pageselect_val);
-	$("#batch-spam").bind('click', function (e) { //batch spam
-		batch_nav("batch_spam");
-	});
-	$("#batch-publish").bind('click', function (e) { //batch publish
-		batch_nav("batch_publish");
-	});
-	$("#batch-ban").bind('click', function (e) { //batch ban
-		batch_nav("batch_ban");
-	});
-	$("#batch-unban").bind('click', function (e) { //batch ban
-		batch_nav("batch_unban");
-	});
-	$("#delete-batch").bind('click', function (e) { // batch delete
-		batch_nav("batch_delete");
-	});
-	$('#pageselect').change(function () {
-		pagination("#pageselect", "/spam2/flags/filter/");
-	});
-	$('#spammed').on('click', function () { //spam filter
-		search_table("spammed", "/spam2/flags/filter/");
-	});
-	$('#unmoderated').on('click', function () { // unmoderated filter
-		search_table("unmoderated", "/spam2/flags/filter/");
-	});
-	$('#page').on('click', function () { // page filter
-		search_table("page", "/spam2/flags/filter/");
-	});
-	$('#note').on('click', function () { // note filter
-		search_table("note", "/spam2/flags/filter/");
-	});
-	$('#reset').on('click', function () { // all filter
-		search_table("all", "/spam2/flags/filter/");
-	});
+  $("#batch-spam").bind('click', function (e) { //batch spam
+    batch_nav("batch_spam");
+  });
+  $("#batch-publish").bind('click', function (e) { //batch publish
+    batch_nav("batch_publish");
+  });
+  $("#batch-ban").bind('click', function (e) { //batch ban
+    batch_nav("batch_ban");
+  });
+  $("#batch-unban").bind('click', function (e) { //batch ban
+    batch_nav("batch_unban");
+  });
+  $("#delete-batch").bind('click', function (e) { // batch delete
+    batch_nav("batch_delete");
+  });
+  $('#pageselect').change(function () {
+    pagination("#pageselect", "/spam2/flags/filter/");
+  });
+  $('#spammed').on('click', function () { //spam filter
+    search_table("spammed", "/spam2/flags/filter/");
+  });
+  $('#unmoderated').on('click', function () { // unmoderated filter
+    search_table("unmoderated", "/spam2/flags/filter/");
+  });
+  $('#page').on('click', function () { // page filter
+    search_table("page", "/spam2/flags/filter/");
+  });
+  $('#note').on('click', function () { // note filter
+    search_table("note", "/spam2/flags/filter/");
+  });
+  $('#reset').on('click', function () { // all filter
+    search_table("all", "/spam2/flags/filter/");
+  });
+  $('#unflag-node').tooltip({ boundary: 'window' });
 });
 </script>
 <div class="card" id="table-card">
@@ -95,15 +92,22 @@ $(document).ready(function () {
                 <span class="text-secondary small"><%= Node.where(uid: flag.author&.id).count %> Nodes<span>
              </td>
             <td>
-              <% if flag.status == 1 %><span class="badge badge-pill badge-success"><i class="fa fa-check-circle text-white"></i> Published</span><% elsif flag.status == 0 %><span class="badge badge-pill badge-danger"><i class="fa fa-ban text-white"></i> Spammed</span><% elsif flag.status == 4 %><span class="badge badge-pill badge-primary"><i class="fa fa-circle text-white"></i> Unmoderated</span><% end %> <span class="badge badge-pill badge-light"><%=  flag.flag %></span>
+              <% if flag.status == 1 %>
+	       <span class="badge badge-pill badge-success"><i class="fa fa-check-circle text-white"></i> Published</span>
+              <% elsif flag.status == 0 %>
+               <span class="badge badge-pill badge-danger"><i class="fa fa-ban text-white"></i> Spammed</span>
+              <% elsif flag.status == 4 %>
+               <span class="badge badge-pill badge-primary"><i class="fa fa-circle text-white"></i> Unmoderated</span>
+              <% end %>
+               <span data-toggle="tooltip" data-placement="top" title="# of flags" class="badge badge-pill badge-light"><%= flag.flag %></span>
             </td>
-             <td>
+            <td> 
                <span class="text-dark"><%= time_ago_in_words(flag.updated_at) %> ago</span>
             </td>
              <td style="height:35px !important;">
                <a class="btn btn-xs border-curve font-weight-bold btn<% if flag.status != 1 %>-success<% else %>-secondary disabled<% end %> publish" data-remote="true" href="/moderate/publish/<%= flag.id %>" ><i class="fa fa-check-circle fa-white"></i> Publish post</a>
                <a class="btn btn-xs border-curve font-weight-bold btn<% if flag.status != 0 %>-danger<% else %>-secondary disabled<% end %> spam" data-remote="true" href="/moderate/spam/<%= flag.id %>"><i class="fa fa-ban fa-white"></i> Spam post</a> 
-               <a class="btn btn-xs border-curve font-weight-bold btn-warning unflag" data-remote="true"href="/moderate/remove_flag_node/<%= flag.id %>">Unflag</a>
+               <a id="unflag-node" data-toggle="tooltip" data-placement="top" title="Remove all flags" class="btn btn-xs border-curve font-weight-bold btn-warning unflag" data-remote="true"href="/moderate/remove_flag_node/<%= flag.id %>">Unflag</a>
                <%= link_to "/notes/delete/#{flag.id}", data: { confirm: "Are you sure you want to delete #{flag.path}?" }, :remote => true, :class => "btn border-curve btn-sm font-weight-bold btn-light delete" do %>
                 <i class="fa fa-trash text-dark"></i>
                <% end %>
