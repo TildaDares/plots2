@@ -325,6 +325,7 @@ en:
       air_quality: "Air Quality"
       water_quality: "Water Quality"
       developers: "Developers"
+      follow_publiclab: "Follow @PublicLab"
     _activity:
       activity: "Activity"
       all_updates: "All updates"
@@ -343,6 +344,11 @@ en:
       your_work: "Your work"
       share_work: "Share your work"
     dashboard:
+      welcome: "Hello, welcome to Public Lab!"
+      description: "This is your dashboard, where recent updates from other community members show up. It'll keep you updated with recent progress, news and developments."
+      get_started: "To get started at Public Lab, try:"
+      ask_question: "Asking a question"
+      explore_projects: "Exploring projects"
       from_blog: "From the <a href='%{url}'>Public Lab Blog</a>"
       by: "by"
     _node_event: 
@@ -362,6 +368,7 @@ en:
         ask_question: "Ask a question"
         post_event: "Post an event"
         tell_story_blog: "Tell your story on the blog"
+        toggle_dropdown: "Toggle Dropdown"
       dashboard: "Dashboard"
       community_research: "Community research"
       welcome: "Welcome"
@@ -726,8 +733,10 @@ en:
         map_knitter: "Map Knitter"
         spectral_workbench: "Spectral Workbench"
         code_community: "Code Community"
+        kits: "Kits"
+        software: "Software"
       about:
-        about_title: "About us"
+        about_title: "About Us"
         stories: "Stories"
         blog: "Blog"
         about_public_lab: "About Public Lab"
@@ -737,6 +746,8 @@ en:
         fund: "How we're funded"
         press_and_media: "Press and Media"
         contact: "Contact"
+        newsletter: "Newsletter"
+        careers: "Careers"
       get_involved:
         get_involved_title: "Get Involved"
         getting_started: "Getting started"
@@ -841,6 +852,8 @@ en:
     home:
       read_more: "Read more"
       more_projects: "More projects"
+    _social:
+      tweet: "Tweet"
     dashboard:
       welcome: "Welcome!"
       need_help: "Need help, want to float an idea, or find collaborators?"

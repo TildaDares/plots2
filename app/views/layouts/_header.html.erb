@@ -68,10 +68,10 @@
             <% end %>
               
               <div class="dropdown-divider"></div>
-              <h6 class="dropdown-header">Kits</h6>
+              <h6 class="dropdown-header"><%= translation('layout._header.tools.kits') %></h6>
               <%= create_nav_dropdown_item("/kits","layout._header.tools.kits_initiative") %>
               <%= create_nav_dropdown_item("//store.publiclab.org","layout._header.tools.store") %>
-              <h6 class="dropdown-header">Software</h6>
+              <h6 class="dropdown-header"><%= translation('layout._header.tools.software') %></h6>
               <%= create_nav_dropdown_item("//mapknitter.org","layout._header.tools.map_knitter") %>
               <%= create_nav_dropdown_item("//infragram.org","layout._header.tools.infragram") %>
               <%= create_nav_dropdown_item("//spectralworkbench.org","layout._header.tools.spectral_workbench") %>
@@ -79,7 +79,7 @@
           </div>
         </li>
 
-        <li class="nav-item dropdown" style="min-width:80px;">
+        <li class="nav-item dropdown about" style="min-width:80px;">
           <div class="nav-link" data-toggle="dropdown" onclick="location.href='#'">
             <!-- <a > -->
             <%= t('layout._header.about.about_title') %>
@@ -88,16 +88,16 @@
           <div class="dropdown-menu">
               <%= create_nav_dropdown_item("/about","layout._header.about.about_public_lab") %>
               <%= create_nav_dropdown_item("/blog","layout._header.about.blog") %>
-              <%= create_nav_dropdown_item("/newsletter","Newsletter") %>
-              <%= create_nav_dropdown_item("/public-lab-careers","Careers") %>
+              <%= create_nav_dropdown_item("/newsletter","layout._header.about.newsletter") %>
+              <%= create_nav_dropdown_item("/public-lab-careers","layout._header.about.careers") %>
               <%= create_nav_dropdown_item("/wiki/contact","layout._header.about.contact") %>
           </div>
         </li>
 
-        <li class="nav-item d-sm-none d-lg-inline" style="padding:0 10px;">
+        <li class="nav-item d-md-none d-lg-inline store" style="padding:0 10px;">
           <a class="nav-link btn btn-outline-secondary" target="_blank" href="//store.publiclab.org"><%= t('layout._header.store') %></a>
         </li>
-        <li class="nav-item d-sm-none d-lg-inline" style="padding:0 10px;">
+        <li class="nav-item d-md-none d-lg-inline donate" style="padding:0 10px;">
           <a class="nav-link btn btn-outline-secondary" href="/donate"><%= t('layout._header.donate') %></a>
         </li>
 
@@ -259,7 +259,22 @@
       overflow-y: auto;
       -webkit-overflow-scrolling:touch;
     }
+    .store{
+      margin-bottom:5px;
+    }
   }
+  @media (min-width:768px){
+    .about{
+      margin-left:-25px;
+    }
+    .store{
+      width:90px;
+    }
+    .donate{
+      width:90px;
+    }
+  }
+ 
 </style>
 
 <%= render :partial => "map/mapDependencies" %>
